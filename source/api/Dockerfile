@@ -8,15 +8,17 @@ RUN pip install --upgrade pip && \
 WORKDIR /workspace
 
 # Copiar el servidor
-COPY api/server.py /workspace/server.py
+COPY server.py /workspace/server.py
 
 # Crear carpeta data dentro de la imagen 
 RUN mkdir -p /workspace/data
 RUN mkdir -p /workspace/models
 
 # Copiar SOLO los archivos necesarios 
-COPY api/temp/* /workspace/data/
-COPY api/temp/models/ /workspace/models/
+COPY temp/corpus_clean.jsonl /workspace/data/corpus_clean.jsonl
+COPY temp/embeddings_metadata.jsonl /workspace/data/embeddings_metadata.jsonl
+COPY temp/faiss.index /workspace/data/faiss.index
+COPY temp/models/ /workspace/models/
 
 # Exponer puerto
 EXPOSE 8000

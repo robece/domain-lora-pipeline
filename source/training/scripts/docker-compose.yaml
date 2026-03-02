@@ -25,8 +25,8 @@ services:
     ipc: host
     shm_size: "16g"
     volumes:
-      - /home/robece/Documents/eventgrid-expert:/workspace
-    working_dir: /workspace
+      - ../:/workspace
+    working_dir: /workspace/scripts
     command: bash
     environment:
       - AZURE_OPENAI_KEY=

@@ -2,8 +2,8 @@ services:
   eventgrid-api:
     image: robece/eventgrid-api:1.0
     build:
-      context: /home/robece/Documents/eventgrid-expert
-      dockerfile: api/Dockerfile
+      context: .
+      dockerfile: Dockerfile
     container_name: eventgrid-api
     restart: unless-stopped
     ports:
@@ -16,7 +16,7 @@ services:
     ipc: host
     shm_size: "16g"
     volumes:
-      - /home/robece/Documents/eventgrid-expert/api/logs:/logs
+      - ./logs:/logs
     environment:
       - HF_TOKEN=
       - AZURE_OPENAI_KEY=
